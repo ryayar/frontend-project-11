@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSS Reader</title>
+</head>
+<body>
+<div class="container">
+  <h1 class="mt-5">RSS Reader</h1>
+  <form id="rss-form" class="mt-4">
+    <div class="mb-3">
+      <label for="rss-url" class="form-label">Введите RSS-URL</label>
+      <input type="text" class="form-control" id="rss-url" placeholder="https://example.com/rss">
+      <div class="invalid-feedback">
+        Ошибка ввода. Проверьте правильность ссылки.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+  </form>
+</div>
+</body>
+</html>
