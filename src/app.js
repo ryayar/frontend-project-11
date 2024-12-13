@@ -94,9 +94,7 @@ export default () => {
       watchedState.loadingProcess.status = 'sending';
 
       validate(urlTarget, urlFeeds)
-        .then(({ url }) => {
-          return axios.get(createLink(url));
-        })
+        .then(({ url }) => axios.get(createLink(url)))
         .then((res) => {
           const parseData = parse(res.data.contents);
           const { feed, posts } = parseData;

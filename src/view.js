@@ -11,13 +11,11 @@ export default (elements, i18n, state) => {
       element.textContent = t(`${key}`);
     });
   };
-  
   const createCard = (title, description) => `
   <li class="list-group-item border-0 border-end-0">
     <h3 class="h6 m-0">${title}</h3>
     <p class="m-0 small text-black-50">${description}</p>
   </li>`;
-  
   const createPostCard = (title, id, url, isRead) => `
   <li class="list-group-item border-0 border-end-0 d-flex justify-content-between align-items-start">
     <a href="${url}" id="${id}" target="_blank" class="${isRead ? 'fw-normal link-secondary' : 'fw-bold'}">
@@ -44,33 +42,33 @@ export default (elements, i18n, state) => {
   };
 
   const renderFeeds = () => {
-  const feedContainer = document.querySelector('.feeds');
-  feedContainer.innerHTML = '';
-  const block = renderBlock(t('feedTitle'));
-  const lists = document.createElement('ul');
-  lists.classList.add('list-group', 'border-0', 'rounded-0');
+    const feedContainer = document.querySelector('.feeds');
+    feedContainer.innerHTML = '';
+    const block = renderBlock(t('feedTitle'));
+    const lists = document.createElement('ul');
+    lists.classList.add('list-group', 'border-0', 'rounded-0');
 
-  state.feeds.forEach(({ title, description }) => {
-    lists.insertAdjacentHTML('beforeend', createCard(title, description));
-  });
+    state.feeds.forEach(({ title, description }) => {
+      lists.insertAdjacentHTML('beforeend', createCard(title, description));
+    });
 
-  feedContainer.append(block, lists);
-};
+    feedContainer.append(block, lists);
+  };
 
   const renderPosts = () => {
-  const postsContainer = document.querySelector('.posts');
-  postsContainer.innerHTML = '';
-  const postBlock = renderBlock(t('postsTitle'));
-  const lists = document.createElement('ul');
-  lists.classList.add('list-group', 'border-0', 'rounded-0');
+    const postsContainer = document.querySelector('.posts');
+    postsContainer.innerHTML = '';
+    const postBlock = renderBlock(t('postsTitle'));
+    const lists = document.createElement('ul');
+    lists.classList.add('list-group', 'border-0', 'rounded-0');
 
-  state.posts.forEach(({ title, id, url }) => {
-    const isRead = state.ui.touchedPostId.includes(id);
-    lists.insertAdjacentHTML('beforeend', createPostCard(title, id, url, isRead));
-  });
+    state.posts.forEach(({ title, id, url }) => {
+      const isRead = state.ui.touchedPostId.includes(id);
+      lists.insertAdjacentHTML('beforeend', createPostCard(title, id, url, isRead));
+    });
 
-  postsContainer.append(postBlock, lists);
-};
+    postsContainer.append(postBlock, lists);
+  };
 
   const renderModal = () => {
     const activePost = state.posts.find(({ id }) => id === state.ui.activePostId);
