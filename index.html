@@ -1,23 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSS Reader</title>
-</head>
-<body>
-<div class="container">
-  <h1 class="mt-5">RSS Reader</h1>
-  <form id="rss-form" class="mt-4">
-    <div class="mb-3">
-      <label for="rss-url" class="form-label">Введите RSS-URL</label>
-      <input type="text" class="form-control" id="rss-url" placeholder="https://example.com/rss">
-      <div class="invalid-feedback">
-        Ошибка ввода. Проверьте правильность ссылки.
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RSS-aggregator</title>
+  </head>
+  <body class="d-flex flex-column min-vh-100 modal-open">
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-break"></div>
+          <div class="modal-footer">
+            <a class="btn btn-primary read-more" href="#" role="button" target="_blank" rel="noopener noreferrer"></a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"></button>
+          </div>
+        </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Добавить</button>
-  </form>
-</div>
-</body>
+    <main class="flex-grow-1">
+      <section class="container-fluid bg-dark p-5">
+        <div class="row">
+          <div class="col-md-10 col-lg-8 mx-auto text-white">
+            <h1 id="title" class="display-3 mb-0"></h1>
+            <p id="subtitle" class="lead"></p>
+            <form action class="rss-form text-body">
+              <div class="row">
+                <div class="col">
+                  <div class="form-floating">
+                    <input required id="url-input" autofocus name="url" aria-label="url" class="form-control w-100" autocomplete="off">
+                    <label for="url-input"></label>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <button type="submit" aria-label="add" class="h-100 btn btn-lg btn-primary px-sm-5"></button>
+                </div>
+              </div>
+            </form>
+            <p class="mt-2 mb-0 text-secondary"><span class="link-example"></span>: https://lorem-rss.hexlet.app/feed | https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml</p>
+            <p class="feedback m-0 position-absolute small text-danger"></p>
+          </div>
+        </div>
+      </section>
+      <section class="container-fluid container-xxl p-5">
+        <div class="row">
+          <div class="col-md-10 col-lg-8 order-1 mx-auto posts"></div>
+          <div class="col-md-10 col-lg-4 mx-auto order-0 order-lg-1 feeds"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer border-top py-3 mt-5 bg-light">
+      <div class="container-xl">
+        <div class="text-center">
+          <span class="created-by"></span> 
+          <a class="created-by-link" href="https://github.com/ryayar" rel="noopener" target="_blank"></a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
