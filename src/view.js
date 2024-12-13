@@ -96,8 +96,6 @@ export default (elements, i18n, state) => {
   };
 
   const watchedState = onChange(state, (path, value, previousValue) => {
-    console.error('state', state)
-    console.error('path', path)
     const {
       errorElement, input, form,
     } = elements;
